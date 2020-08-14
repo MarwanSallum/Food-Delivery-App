@@ -2,6 +2,9 @@ import 'package:flutter/material.dart';
 
 // Pages
 import 'package:food_delivery_app/src/pages/home_page.dart';
+import 'package:food_delivery_app/src/pages/order_page.dart';
+import 'package:food_delivery_app/src/pages/favorite_page.dart';
+import 'package:food_delivery_app/src/pages/profile_page.dart';
 
 class MainScreen extends StatefulWidget {
   @override
@@ -13,13 +16,21 @@ class _MainScreenState extends State<MainScreen> {
   int currentTabIndex = 0;
   List<Widget> pages;
   Widget currentPage;
+
   HomePage homePage;
+  OrderPage orderPage;
+  FavoritePage favoritePage;
+  ProfilePage profilePage;
 
   @override
   void initState() {
     super.initState();
     homePage = HomePage();
-    pages = [homePage];
+    orderPage = OrderPage();
+    favoritePage = FavoritePage();
+    profilePage = ProfilePage();
+
+    pages = [homePage, orderPage, favoritePage, profilePage];
     currentPage = homePage;
   }
 
