@@ -1,18 +1,19 @@
 import 'package:flutter/material.dart';
+import 'package:food_delivery_app/src/model/food_data.dart';
 import 'package:food_delivery_app/src/widgets/bought_foods.dart';
 import 'package:food_delivery_app/src/widgets/food_category.dart';
 import 'package:food_delivery_app/src/widgets/home_top_info.dart';
 import 'package:food_delivery_app/src/widgets/search_field.dart';
 
 // Data
-import 'data/food_data.dart';
+import 'package:food_delivery_app/src/data/food_data.dart';
 
-class HomeScreen extends StatefulWidget {
+class HomePage extends StatefulWidget {
   @override
-  _HomeScreenState createState() => _HomeScreenState();
+  _HomePageState createState() => _HomePageState();
 }
 
-class _HomeScreenState extends State<HomeScreen> {
+class _HomePageState extends State<HomePage> {
   List<Food> _foods = foods;
   @override
   Widget build(BuildContext context) {
@@ -20,10 +21,10 @@ class _HomeScreenState extends State<HomeScreen> {
       body: ListView(
         padding: EdgeInsets.only(top: 50.0, left: 20.0, right: 20.0),
         children: [
-            HomeTopInfo(),
-            FoodCategory(),
-            SizedBox(height: 20.0,),
-            SearchField(),
+          HomeTopInfo(),
+          FoodCategory(),
+          SizedBox(height: 20.0,),
+          SearchField(),
           SizedBox(height: 20.0,),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -40,9 +41,9 @@ class _HomeScreenState extends State<HomeScreen> {
                 child: Text(
                   "View All",
                   style: TextStyle(
-                    fontWeight: FontWeight.bold,
-                    fontSize: 18.0,
-                    color: Colors.orangeAccent
+                      fontWeight: FontWeight.bold,
+                      fontSize: 18.0,
+                      color: Colors.orangeAccent
                   ),
                 ),
               ),
