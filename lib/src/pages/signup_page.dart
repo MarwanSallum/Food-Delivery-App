@@ -1,19 +1,31 @@
 import 'package:flutter/material.dart';
-import 'package:food_delivery_app/src/pages/signup_page.dart';
+import 'package:food_delivery_app/src/pages/signin_page.dart';
 
-class SignInPage extends StatefulWidget {
+class SignUpPage extends StatefulWidget {
   @override
-  _SignInPageState createState() => _SignInPageState();
+  _SignUpPageState createState() => _SignUpPageState();
 }
 
-class _SignInPageState extends State<SignInPage> {
+class _SignUpPageState extends State<SignUpPage> {
 
   bool _toggleVisibility = true;
+  bool _toggleConfirmVisibility = true;
 
   Widget _buildEmailTextField() {
     return TextFormField(
       decoration: InputDecoration(
-          hintText: "Your email or username",
+          hintText: "Email",
+          hintStyle: TextStyle(
+            color: Color(0xFFBDC2CB),
+            fontSize: 18.0,
+          )),
+    );
+  }
+
+  Widget _buildUserTextField() {
+    return TextFormField(
+      decoration: InputDecoration(
+          hintText: "User Name",
           hintStyle: TextStyle(
             color: Color(0xFFBDC2CB),
             fontSize: 18.0,
@@ -25,15 +37,39 @@ class _SignInPageState extends State<SignInPage> {
     return TextFormField(
       obscureText: _toggleVisibility,
       decoration: InputDecoration(
-        suffixIcon: IconButton(
-          onPressed: (){
-            setState(() {
-              _toggleVisibility = !_toggleVisibility;
-            });
-          },
-          icon: _toggleVisibility ?  Icon(Icons.visibility_off) : Icon(Icons.visibility),
-        ),
+          suffixIcon: IconButton(
+            onPressed: (){
+              setState(() {
+                _toggleVisibility = !_toggleVisibility;
+              });
+            },
+            icon: _toggleVisibility
+                ? Icon(Icons.visibility_off)
+                : Icon(Icons.visibility),
+          ),
           hintText: "Password",
+          hintStyle: TextStyle(
+            color: Color(0xFFBDC2CB),
+            fontSize: 18.0,
+          )),
+    );
+  }
+
+  Widget _buildConfirmPasswordTextField() {
+    return TextFormField(
+      obscureText: _toggleConfirmVisibility,
+      decoration: InputDecoration(
+          suffixIcon: IconButton(
+            onPressed: (){
+              setState(() {
+                _toggleConfirmVisibility = !_toggleConfirmVisibility;
+              });
+            },
+            icon: _toggleConfirmVisibility
+                ? Icon(Icons.visibility_off)
+                : Icon(Icons.visibility),
+          ),
+          hintText: "Confirm Password",
           hintStyle: TextStyle(
             color: Color(0xFFBDC2CB),
             fontSize: 18.0,
@@ -44,13 +80,14 @@ class _SignInPageState extends State<SignInPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      resizeToAvoidBottomPadding: false,
       body: Padding(
         padding: EdgeInsets.symmetric(horizontal: 10.0),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Text(
-              'Sign In',
+              'Sign Up',
               style: TextStyle(
                 fontSize: 40.0,
                 fontWeight: FontWeight.bold,
@@ -79,7 +116,11 @@ class _SignInPageState extends State<SignInPage> {
                   children: [
                     _buildEmailTextField(),
                     SizedBox(height: 20.0,),
+                    _buildUserTextField(),
+                    SizedBox(height: 20.0,),
                     _buildPasswordTextField(),
+                    SizedBox(height: 20.0,),
+                    _buildConfirmPasswordTextField()
                   ],
                 ),
               ),
@@ -95,7 +136,7 @@ class _SignInPageState extends State<SignInPage> {
               ),
               child: Center(
                 child: Text(
-                  "Sign In",
+                  "Sign Up",
                   style: TextStyle(
                     color: Colors.white,
                     fontSize: 18.0,
@@ -111,7 +152,7 @@ class _SignInPageState extends State<SignInPage> {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Text(
-                  "Don't have an account ?",
+                  "Already have an account ?",
                   style: TextStyle(
                     color: Color(0xffbdc2cb),
                     fontWeight: FontWeight.bold, fontSize: 18.0,
@@ -123,11 +164,11 @@ class _SignInPageState extends State<SignInPage> {
                 InkWell(
                   onTap: (){
                     Navigator.of(context).pushReplacement(MaterialPageRoute(
-                      builder: (BuildContext context) => SignUpPage(),
+                        builder: (BuildContext context) => SignInPage(),
                     ));
                   },
                   child: Text(
-                    "Sign up",
+                    "Sign in",
                     style: TextStyle(
                         color: Colors.blueAccent, fontWeight: FontWeight.bold),
                   ),
