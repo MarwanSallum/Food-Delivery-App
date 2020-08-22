@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:food_delivery_app/src/widgets/custom_list_tile.dart';
+import 'package:food_delivery_app/src/widgets/interactive_button.dart';
 
 class ProfilePage extends StatefulWidget {
   @override
@@ -52,24 +53,7 @@ class _ProfilePageState extends State<ProfilePage> {
                       SizedBox(height: 10.0,),
                       Text("+966544075175", style: TextStyle(color: Colors.grey),),
                       SizedBox(height: 20.0,),
-                      Container(
-                        height: 25.0,
-                        width: 60.0,
-                        decoration: BoxDecoration(
-                            border: Border.all(
-                              color: Colors.blue,
-                            ),
-                            borderRadius: BorderRadius.circular(20.0)),
-                        child: Center(
-                          child: Text(
-                            "Edit",
-                            style: TextStyle(
-                                color: Colors.blue,
-                                fontSize: 16.0,
-                            ),
-                          ),
-                        ),
-                      ),
+                      InteractiveBotton(title: "Edit", onTap: (){},),
                     ],
                   ),
                 ],
@@ -198,3 +182,5 @@ class _ProfilePageState extends State<ProfilePage> {
     );
   }
 }
+
+

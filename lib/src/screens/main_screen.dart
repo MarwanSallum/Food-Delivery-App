@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 // Pages
 import 'package:food_delivery_app/src/pages/home_page.dart';
 import 'package:food_delivery_app/src/pages/order_page.dart';
-import 'package:food_delivery_app/src/pages/favorite_page.dart';
+import 'package:food_delivery_app/src/pages/explore_page.dart';
 import 'package:food_delivery_app/src/pages/profile_page.dart';
 
 class MainScreen extends StatefulWidget {
@@ -19,7 +19,7 @@ class _MainScreenState extends State<MainScreen> {
 
   HomePage homePage;
   OrderPage orderPage;
-  FavoritePage favoritePage;
+  ExplorePage explorePage;
   ProfilePage profilePage;
 
   @override
@@ -27,10 +27,10 @@ class _MainScreenState extends State<MainScreen> {
     super.initState();
     homePage = HomePage();
     orderPage = OrderPage();
-    favoritePage = FavoritePage();
+    explorePage = ExplorePage();
     profilePage = ProfilePage();
 
-    pages = [homePage, orderPage, favoritePage, profilePage];
+    pages = [homePage, explorePage, orderPage, profilePage];
     currentPage = homePage;
   }
 
@@ -52,12 +52,12 @@ class _MainScreenState extends State<MainScreen> {
             title: Text("Home"),
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.shopping_basket),
-            title: Text("Orders"),
+            icon: Icon(Icons.explore),
+            title: Text("Explore"),
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.favorite),
-            title: Text("Favorite"),
+            icon: Icon(Icons.shopping_basket),
+            title: Text("Orders"),
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.person),
